@@ -6,7 +6,7 @@
 
 # /bin/bash
 docker pull atdr.meo.ws/archiveteam/warrior-dockerfile:latest
-for i in {0..99}; do
+for i in {1..99}; do
   docker stop archiveteam_$i; docker rm archiveteam_$i
   docker run -d --name archiveteam_$i --env DOWNLOADER="Brockoly" --env SELECTED_PROJECT="auto" --env CONCURRENT_ITEMS="6" -p 80$i:8001 --restart=on-failure -e PUID=1002 -e PGID=1002 atdr.meo.ws/archiveteam/warrior-dockerfile:latest
 done
